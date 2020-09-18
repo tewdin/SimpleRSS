@@ -9,15 +9,17 @@
 		$item = $pages->find('template=blog, sort=-created, limit=10');
 		echo date('D, d M Y H:i:s O', $pages->get("template=blog")->created);
 		?></pubDate>
-		<copyright>Timo Anttila</copyright>
+		<copyright>Priocta</copyright>
 		<ttl>60</ttl>
 		<atom:link href="<?php echo $page->httpUrl; ?>" rel="self" type="application/rss+xml"/>
 		<?php
-		echo "<image>";
-		echo "<title>". $front->title ."</title>";
-		echo "<url>". $item->first->img->first->httpUrl ."</url>";
-		echo "<link>". $front->httpUrl ."</link>";
-		echo "</image>";
+		if($item->first->img->first){
+			echo "<image>";
+			echo "<title>". $front->title ."</title>";
+			echo "<url>". $item->first->img->first->httpUrl ."</url>";
+			echo "<link>". $front->httpUrl ."</link>";
+			echo "</image>";
+		}
 		?>
 <?php foreach($item as $item){ if(strtotime($item->created) < strtotime('now') ){
 	echo "<item><title>$item->title</title>";
