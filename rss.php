@@ -9,7 +9,7 @@
 		$item = $pages->find('template=blog, sort=-created, limit=10');
 		echo date('D, d M Y H:i:s O', $pages->get("template=blog")->created);
 		?></pubDate>
-		<copyright>Priocta</copyright>
+		<copyright>Timo Anttila</copyright>
 		<ttl>60</ttl>
 		<atom:link href="<?php echo $page->httpUrl; ?>" rel="self" type="application/rss+xml"/>
 		<?php
